@@ -6,11 +6,9 @@ public:
         MAX = 0;
         for(int i = 0 ; i < grid.size() ; i++){
             for(int j = 0 ; j < grid[i].size() ; j++){
-                if(grid[i][j] == 1){
-                    cur = 0;
-                    dfs(grid,i,j);
-                    MAX = max(MAX,cur);
-                }
+                cur = 0;
+                dfs(grid,i,j);
+                MAX = max(MAX,cur);
             }
         }
         
