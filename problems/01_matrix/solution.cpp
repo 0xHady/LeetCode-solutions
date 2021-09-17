@@ -10,22 +10,23 @@ public:
                 else
                     mat[i][j] = -1;
         
+        pair<int,int> cell;
         vector<pair<int,int>> direc(4);
         direc = {{0,1},{0,-1},{1,0},{-1,0}};
+        
         while(!q.empty()){
-            int size = q.size();
+            cell = q.front();
+            q.pop();
             
-                pair<int,int> cell;
-                cell = q.front();
-                q.pop();
-                for(auto i:direc){
-                    int x = cell.first+i.first;
-                    int y = cell.second+i.second;
-                    if(x < mat.size() && x >= 0 && y >= 0 && y < mat[0].size() && mat[x][y] == -1){
-                        mat[x][y] = mat[cell.first][cell.second]+1 ;
-                        q.push({x,y});
-                    }
+            for(auto i:direc){
+                int x = cell.first+i.first;
+                int y = cell.second+i.second;
+                if(x < mat.size() && x >= 0 && y >= 0 && y < mat[0].size() && mat[x][y] == -1){
+                    mat[x][y] = mat[cell.first][cell.second]+1 ;
+                    q.push({x,y});
                 }
+            }
+            
         }
         return mat;
     }
